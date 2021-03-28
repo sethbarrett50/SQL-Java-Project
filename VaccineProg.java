@@ -1,17 +1,17 @@
 /*
-Project 2 for CSCI 3410 DBS created by Seth Barrett
+Project 2 for  CSCI 3410 DBS created by Seth Barrett
 The purpose of this code is to create an application for users to interact with the database created in project 1
-I choose to mainly focus on the company table and specifically the url attribute for my interactions
-There was a requirement to interact with the database through an update, a select-project-join query and an insertion of data
+I choose to mainly focus on the company table and specifically the url attribute with my interactions
+There was a requirement of three sql interactions, a select-project-join query, an insertion and an update of data
+I implemented user input for all three as well as covering allowed user input
 */
 
 import java.sql.*;
-//Import all of sql
+//Import sql 
 import java.util.Scanner;
 //Import scanner for getting the user's input ie. C.RL()
 import java.util.ArrayList;
-//Import ArrayList for holding data
-
+//Import ArrayList to be hold data
 
 
 public class VaccineProg {
@@ -107,7 +107,7 @@ public class VaccineProg {
           }
           String inValues = "INSERT INTO COMPANY VALUES ('" + addComp + "', '" + addCompUrl + "');";
           //Declares String variable inValues to equal a SQL insertion
-          System.out.println("You added " + stmt.executeUpdate(inValues) + "company and its url.");
+          System.out.println("You added " + stmt.executeUpdate(inValues) + " company and its url.");
           //Inserts new data into the database and return to console that values were added.
       }
       
@@ -136,8 +136,10 @@ public class VaccineProg {
           //Sets new ResultSet object to be the equal to the SELECT operation of companies' names
           while (allCName.next()) {compL.add(allCName.getString("Name"));}
           //Loops through the values returned by the select query to be added to vaccL
-          for (int i = 0; i < compL.size(); i++) System.out.print(compL.get(i) + " ");
+          for (int i = 0; i < compL.size(); i++) System.out.print((i+1) + " {" + compL.get(i) + "} ");
           //Lists all current company names
+          System.out.println();
+          //Adds new line in console for user input
           addComp = ui.nextLine();
           //Sets String variable addComp to be the users input by using the scanner object
           while (!compL.contains(addComp)) 
@@ -147,7 +149,7 @@ public class VaccineProg {
         	  addComp = ui.nextLine();
               //Sets String variable addComp to be the users input by using the scanner object
           }
-          System.out.println("\nPlease enter the updated url value:");
+          System.out.println("\nPlease enter the updated url value starting with https:// ");
           //Prints question of interaction to insert data to the user
           String addCompUrl = ui.nextLine();
           //Sets String variable addComp to be the users input by using the scanner object
