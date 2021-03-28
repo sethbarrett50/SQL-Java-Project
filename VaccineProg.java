@@ -1,11 +1,16 @@
-//Project 2 for  CSCI 3410 DBS created by Seth Barrett
-//The purpose of this code is to create an application for users to interact with the database created in project 1
-//I choose to mainly focus on the company table and specifically the url attribute
+/*
+Project 2 for CSCI 3410 DBS created by Seth Barrett
+The purpose of this code is to create an application for users to interact with the database created in project 1
+I choose to mainly focus on the company table and specifically the url attribute for my interactions
+There was a requirement to interact with the database through an update, a select-project-join query and an insertion of data
+*/
 
 import java.sql.*;
+//Import all of sql
 import java.util.Scanner;
-import java.util.ArrayList;
 //Import scanner for getting the user's input ie. C.RL()
+import java.util.ArrayList;
+//Import ArrayList for holding data
 
 
 
@@ -26,7 +31,7 @@ public class VaccineProg {
       //Declares new ArrayList variable to contain all the names of the variables.
       while (allVName.next()) {vaccL.add(allVName.getString("Name"));}
       //Loops through the values returned by the select query to be added to vaccL
-      for (int i = 0; i < vaccL.size(); i++) System.out.print(vaccL.get(i) + " ");
+      for (int i = 0; i < vaccL.size(); i++) System.out.print((i+1) + " {" + vaccL.get(i) + "} ");
       //Loops through list of vaccine names and prints them to console
       System.out.println("\nEnter the name of the vaccine to get all the websites of the companies making it:");
       //Prints question of interaction to insert data to the user.
@@ -105,8 +110,6 @@ public class VaccineProg {
           System.out.println("You added " + stmt.executeUpdate(inValues) + "company and its url.");
           //Inserts new data into the database and return to console that values were added.
       }
-      
-      
       
       
       /*
